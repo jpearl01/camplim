@@ -1,0 +1,80 @@
+<template name="ImportMapsOFF">
+
+{{#if Template.subscriptionsReady}}
+
+  <form class="form-horizontal">
+    {{> MapSelector name="mapName" label='Select Map' thingVar=mapSelectorThingVar }}
+  </form>
+  <hr/>
+
+  {{#if thing._id}}
+    <h3>thing : {{thing._id}}</h3>
+    <form class="form-horizontal">
+
+      {{#each name in mapFields}}
+        {{> MapField name=name }}
+      {{/each}}
+
+      {{> AddMapField}}
+
+    </form>
+  {{/if}}
+
+{{/if}}
+
+</template>
+
+<template name="ImportMaps">
+
+{{#if Template.subscriptionsReady}}
+  <form class="form-horizontal">
+    <div class="col-sm-6 form-group">
+      <label for="importMapSelect" class="control-label col-sm-4">Import Map:</label>
+      <div class="col-sm-8">
+        <select id="importMapSelect" class="form-control">
+          <option value="">Select a Map</option>
+          {{#each map in importMaps}}
+            <option value="{{map._id}}" selected="{{ atPart 'id' map._id}}">{{map.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+
+    <div class="col-sm-6 form-group {{#if hasError}}has-error{{/if}}">
+      <div class="input-group">
+        <input id="newImportMapName" class="form-control" maxlength="100" placeholder="Enter NEW Map Name">
+        <div class="input-group-btn">
+          <button id="newImportMapButton" type="button" class="btn btn-secondary" disabled="{{hasError}}">
+            <span class="glyphicon glyphicon-plus-sign"></span> New Map
+          </button>
+        </div>
+      </div>
+      <div class="help-block">{{error}}</div>
+    </div>
+
+    {{#if thing._id}}
+      <div class="clearfix"></div>
+      <div class="">
+        <h3>Import Map : {{thing.name}}</h3>
+
+        <h4 class="col-sm-3 center">Import Column</h4>
+        <h4 class="col-sm-3 center">Local Field</h4>
+        <h4 class="col-sm-3 center">Local Collection</h4>
+        <h4 class="col-sm-3">&nbsp;</h4>
+
+        {{#each field in thing.fieldsArray}}
+          {{> MapField index=@index field=field parentThingVar=thingVar}}
+        {{/each}}
+
+        <br/>
+
+        {{> AddMapField parentThingVar=thingVar}}
+
+      </div>
+    {{/if}}
+
+  </form>
+
+{{/if}}
+
+</template>

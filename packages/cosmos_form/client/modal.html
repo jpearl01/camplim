@@ -1,0 +1,41 @@
+<template name="ModalBox">
+    <div class="modal {{#unless noFade}}fade{{/unless}}">
+        <div class="modal-dialog {{modalDialogClass}}">
+            <div class="modal-content">
+
+                {{#if modalHeader}}
+                  <div class="modal-header">
+                    {{> Template.dynamic template=modalHeader data=modalHeaderData }}
+                  </div>
+                {{/if}}
+
+                <div class="modal-body">
+                  {{> Template.dynamic template=modalBody data=modalBodyData }}
+                </div>
+
+                {{#if modalFooter}}
+                  <div class="modal-footer">
+                    {{> Template.dynamic template=modalFooter data=modalFooterData }}
+                  </div>
+                {{/if}}
+
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="ModalHeader">
+
+  {{#if headerTitle}}
+    <h4 class="modal-title">{{headerTitle}}</h4>
+  {{/if}}
+
+</template>
+
+<template name="ModalFooter">
+
+  <button type="button" class="btn btn-danger {{cancelClass}}" data-dismiss="modal" tabindex="{{cancelIndex}}">{{cancelLabel}}</button>
+
+  <button type="button" class="btn btn-primary {{addClass}}" tabindex="{{addIndex}}">{{addLabel}}</button>
+
+</template>

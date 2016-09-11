@@ -1,0 +1,70 @@
+{
+  "dependencies": {
+    "each-part": {
+      "version": "0.8.1",
+      "resolved": "https://registry.npmjs.org/each-part/-/each-part-0.8.1.tgz",
+      "from": "each-part@0.8.1",
+      "dependencies": {
+        "stream-search-helper": {
+          "version": "0.7.1",
+          "resolved": "http://registry.npmjs.org/stream-search-helper/-/stream-search-helper-0.7.1.tgz",
+          "from": "stream-search-helper@0.7.1"
+        }
+      }
+    },
+    "through2": {
+      "version": "2.0.0",
+      "resolved": "https://registry.npmjs.org/through2/-/through2-2.0.0.tgz",
+      "from": "through2@2.0.0",
+      "dependencies": {
+        "readable-stream": {
+          "version": "2.0.5",
+          "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-2.0.5.tgz",
+          "from": "readable-stream@2.0.5",
+          "dependencies": {
+            "core-util-is": {
+              "version": "1.0.2",
+              "resolved": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz",
+              "from": "core-util-is@1.0.2"
+            },
+            "inherits": {
+              "version": "2.0.1",
+              "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz",
+              "from": "inherits@2.0.1"
+            },
+            "isarray": {
+              "version": "0.0.1",
+              "resolved": "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz",
+              "from": "isarray@0.0.1"
+            },
+            "process-nextick-args": {
+              "version": "1.0.6",
+              "resolved": "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-1.0.6.tgz",
+              "from": "process-nextick-args@1.0.6"
+            },
+            "string_decoder": {
+              "version": "0.10.31",
+              "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-0.10.31.tgz",
+              "from": "string_decoder@0.10.31"
+            },
+            "util-deprecate": {
+              "version": "1.0.2",
+              "resolved": "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz",
+              "from": "util-deprecate@1.0.2"
+            }
+          }
+        },
+        "xtend": {
+          "version": "4.0.1",
+          "resolved": "https://registry.npmjs.org/xtend/-/xtend-4.0.1.tgz",
+          "from": "xtend@4.0.1"
+        }
+      }
+    },
+    "watch.io": {
+      "version": "1.0.7",
+      "resolved": "https://registry.npmjs.org/watch.io/-/watch.io-1.0.7.tgz",
+      "from": "watch.io@1.0.7"
+    }
+  }
+}

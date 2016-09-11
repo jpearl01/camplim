@@ -1,0 +1,9 @@
+<template name="SelectChoices">
+
+<select>
+  {{#each choice in choices}}
+    <option selected="{{isChoice choice}}">{{choice}}</option>
+  {{/each}}
+</select>
+
+</template>

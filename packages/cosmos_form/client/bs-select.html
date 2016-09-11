@@ -1,0 +1,54 @@
+<template name="BootstrapFormSelect">
+
+  <div class="{{#if hasError}}has-error{{/if}} {{groupClass}}">
+    {{#if label}}
+      <label class="{{labelClass}}" for="{{name}}">{{label}}</label>
+    {{/if}}
+    <div class="{{fieldContainerClass}}">
+
+      {{#if editmode}}
+
+        <div id="selectFieldContainer" class="{{fieldClass}}">
+
+          <select id="{{id}}" name="{{name}}" required="{{required}}"
+              tabindex="{{tabindex}}" class="{{inputClass}} {{inputSelector}} focus-input thing-input">
+            {{#each choice in choices}}
+              <option selected="{{isChoice choice}}">{{choice}}</option>
+            {{/each}}
+          </select>
+
+        </div>
+
+      {{else}}
+
+        <div class="{{fieldClass}}">
+
+          <p class="{{staticFieldClass}} editmode-true">
+            {{formattedValue}}
+            <span class="{{editIconClass}}" style="margin-left:10px;"
+              ></span>
+          </p>
+        </div>
+
+      {{/if}}
+
+    </div>
+
+    {{#if useEditButtons}}
+      <div class="col-sm-1 editmode-buttons">
+        <button type="button" class="btn btn-danger cancel-button">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </div>
+    {{/if}}
+
+  </div>
+
+  {{#if hasError}}
+    <div class="{{errorClass}}">
+      <span class="help-block">{{error}}</span>
+    </div>
+  {{/if}}
+
+
+</template>

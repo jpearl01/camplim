@@ -1,0 +1,32 @@
+<template name="ReactiveTable">
+
+  {{#if Template.subscriptionsReady}}
+
+    {{#if tableFilterId}}
+      {{> ReactiveTableFilter id=tableFilterId fields=filterFields
+          label=filterLabel
+      }}
+    {{/if}}
+
+    {{> reactiveTable id=tableId settings=tableSettings}}
+
+  {{else}}
+    <div class="center">
+      {{! > loading}}
+      Loading...
+    </div>
+  {{/if}}
+
+</template>
+
+<template name="ReactiveTableFilter">
+
+  <div id="reactiveTableButtons" class="pull-left col-sm-1">
+    <button id="reactiveTableAddButton" type="button" class="btn btn-primary">Add</button>
+  </div>
+
+  <div class="pull-left col-sm-8 table-filter table-filter-{{id}}">
+    {{> reactiveTableFilter id=id label=label fields=fields}}
+  </div>
+
+</template>

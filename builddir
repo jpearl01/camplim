@@ -1,0 +1,4 @@
+meteor build "$1"/0.1.0 --directory
+cd "$1"/0.1.0/programs/server
+npm install
+

@@ -1,0 +1,31 @@
+
+div#wish-box {
+}
+
+textarea#wish {
+  position:absolute;
+  bottom:-2em;
+  width: 15em;
+  height: 2em;
+  resize: none;
+  z-index:auto;
+  overflow:hidden;
+  transition: width .5s, height .5s;
+  -webkit-transition: width .5s, height .5s;
+	-moz-transition:    width .5s, height .5s;
+	-ms-transition:     width .5s, height .5s;
+	-o-transition:      width .5s, height .5s;
+}
+
+textarea#wish:focus {
+  width: 18em;
+  height: 10em;
+  z-index:1000;
+  overflow:auto;
+}
+
+button#wish-btn {
+  color:white;
+  position:absolute;
+  right:0;
+}

@@ -1,0 +1,15 @@
+.editmode-buttons {
+  padding-left:0;
+}
+.editmode-buttons button.btn-danger {
+  margin-left:10px;
+}
+
+.editmode-buttons span.glyphicon-remove {
+  color:white;
+}
+
+.confirm-delete-button {
+  padding-left: 5px;
+  padding-right: 5px;
+}

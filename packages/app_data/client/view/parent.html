@@ -1,0 +1,60 @@
+<template name="ParentSpecimen">
+
+  <div class="{{#if hasError name}}has-error{{/if}} form-group">
+    <label class="control-label col-sm-2" for="parentId">Parent</label>
+    <div class="{{fieldContainerClass}}">
+
+      {{#if editmode}}
+
+        <div class="input-group">
+
+          <div class="input-group-btn">
+            {{> ButtonChoices name='parentType' editmode=noopEditmode autosave=false}}
+          </div>
+
+          <input
+            type="text"
+            class="BI PS RI form-control typeahead"
+            id="parentId"
+            name="parentId"
+            value="{{parentId}}"
+            placeholder="Choose parent type and enter parent ID"
+            minlength="1"
+            maxlength="100"
+            required="required"
+            autocomplete='off'
+            spellcheck='off'
+            data-source='search'
+            data-value-key='_id'
+          >
+        </div>
+
+      {{else}}
+
+        <div class="{{fieldClass}}">
+
+          <p class="{{staticFieldClass}}">
+            {{parentType}} :
+            <a class="parent-link" href="../../{{parentItem}}/view/{{parentId}}">{{parentId}}</a>
+            <span class="{{editIconClass}}" style="margin-left:10px;"></span>
+          </p>
+        </div>
+
+      {{/if}}
+
+    </div>
+
+    {{#if useEditButtons}}
+      <div class="col-sm-2 editmode-buttons">
+
+        <button type="button" class="btn btn-danger cancel-button">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </div>
+    {{/if}}
+
+  </div>
+
+  <div class="clearfix"></div>
+
+</template>

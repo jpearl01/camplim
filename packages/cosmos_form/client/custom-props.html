@@ -1,0 +1,81 @@
+<template name="BootstrapFormCustomInput">
+
+  <div class="{{#if hasError}}has-error{{/if}} {{groupClass}}">
+
+    {{#if editmode}}
+      <div class="col-sm-2">
+        <input type="text" class="{{typeMarker}} {{inputClass}}  custom-input custom-input-key"
+          value="{{key}}" placeholder="{{placeholder}}"
+          minlength="{{minlength}}" maxlength="{{maxlength}}"
+          required="required">
+      </div>
+    {{else}}
+      <label class="{{labelClass}} editmode-true">{{key}}</label>
+    {{/if}}
+
+
+    <div class="{{fieldContainerClass}}">
+
+      <div class="{{fieldClass}}">
+
+        {{#if editmode}}
+
+          <input type="{{customValueType}}" class="{{typeMarker}} {{inputClass}} {{inputSelector}} focus-input custom-input custom-input-value"
+            value="{{customValueValue}}" placeholder="{{placeholder}}"
+            minlength="{{minlength}}" maxlength="{{maxlength}}"
+          >
+        {{else}}
+          <p class="{{staticFieldClass}} editmode-true">
+            {{formattedCustomValueValue}}
+            <span class="{{editIconClass}}" style="margin-left:10px;"></span>
+          </p>
+        {{/if}}
+      </div>
+
+    </div>
+
+    {{#if editmode}}
+      <div class="col-sm-2 editmode-buttons">
+        <button type="button" class="btn btn-primary change-button {{changeButtonVisibility}}">
+          <span class="glyphicon glyphicon-ok"></span>
+        </button>
+
+        <button type="button" class="btn btn-danger {{cancelButtonVisibility}}">
+          <span class="glyphicon {{#if deleting}}glyphicon-trash{{else}}glyphicon-remove{{/if}}"></span> {{#if deleting}}Confirm{{/if}}
+        </button>
+
+        <button type="button" class="btn btn-default {{deleteButtonVisibility}}">
+          <span class="glyphicon {{#if deleting}}glyphicon-ban-circle{{else}}glyphicon-trash{{/if}}"></span>
+        </button>
+      </div>
+    {{/if}}
+
+  </div>
+
+  {{#if hasError}}
+    <div class="{{errorClass}}">
+      <span class="help-block">{{error}}</span>
+    </div>
+  {{/if}}
+
+  <div class="clearfix"></div>
+
+</template>
+
+<template name="BootstrapFormCustomAdd">
+
+{{#if adding}}
+  {{> BootstrapFormCustomInput key='' addingVar=addingVar}}
+{{else}}
+  <div class="form-group">
+    <div class="col-sm-3 col-sm-offset-1">
+      <button type="button" class="btn btn-secondary btn-xs add-custom">
+        <span class="glyphicon glyphicon-plus"></span> Custom Value
+      </button>
+    </div>
+  </div>
+{{/if}}
+
+<div class="clearfix"></div>
+
+</template>

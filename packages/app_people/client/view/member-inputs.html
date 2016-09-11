@@ -1,0 +1,46 @@
+<template name="member">
+
+  {{#if Template.subscriptionsReady}}
+
+    {{#with fieldContainerClass=fieldContainerClass }}
+
+      <h3 class="{{titleClass}}">Member</h3>
+
+      <form class="form-horizontal">
+
+        {{> TextInput name="name" placeholder="John Doe" }}
+
+        {{> TextInput name="email" placeholder="user@somewhere.com" }}
+
+        {{> TextInput name="phone" placeholder="(123) 456-7890 x1234"}}
+
+        {{> TextInput name="jobTitle" label='Job Title' }}
+
+        {{> TextInput name="office" label="Office" }}
+
+        {{#each customKey in thing.getCustomKeys}}
+          {{> BootstrapFormCustomInput key=customKey }}
+        {{/each}}
+
+        {{> BootstrapFormCustomAdd }}
+
+        {{#if useSaveButton}}
+          <div>
+            <button type="submit" disabled="{{thing.isNotModified}}"
+                class="btn {{#if thing.isModified}} btn-primary {{else}} btn-default {{/if}} btn-lg save-button {{buttonClass}}">
+              Save
+            </button>
+          </div>
+        {{/if}}
+
+      </form>
+
+    {{/with}}
+
+  {{else}}
+
+    <h1>Loading...</h1>
+
+  {{/if}}
+
+</template>

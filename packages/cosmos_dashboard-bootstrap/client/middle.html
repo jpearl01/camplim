@@ -1,0 +1,21 @@
+<template name="dmiddle">
+
+<div id="dmiddle" class="container-fluid">
+  <div class="row">
+    <div id="disdebar" class="{{sidebarSize}} sidebar">
+      {{> Template.dynamic template=sidebarId}}
+    </div>
+
+    <div id="dmain" class="{{mainSize}} main">
+
+      <div id="dnotices">
+        {{> dnotices}}
+      </div>
+
+      {{> Template.dynamic template=main}}
+
+    </div>
+  </div>
+</div>
+
+</template>

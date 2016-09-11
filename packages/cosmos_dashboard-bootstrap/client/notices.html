@@ -1,0 +1,15 @@
+
+<template name="dnotices">
+  <div class="notices">
+    {{#each notices}}
+      {{> dnotice}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="dnotice">
+  <div class="alert alert-{{type}} alert-dismissable" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    {{message}}
+  </div>
+</template>

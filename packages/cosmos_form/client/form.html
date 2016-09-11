@@ -1,0 +1,41 @@
+<template name="Form">
+  
+{{#if Template.subscriptionsReady}}
+
+{{#with thing.get}}
+
+  <div class="{{formDivClass}}">
+
+    {{#if _id}} <h3>View/Edit</h3> {{else}} <h3>New</h3> {{/if}}
+
+    <form>
+
+      {{> FormTextInput context 'name' }}
+      {{> FormTextInput context 'blah' }}
+
+      <button type="submit">
+        {{#if _id}} Save {{else}} Add {{/if}}
+      </button>
+
+    </form>
+
+  </div>
+
+{{/with}}
+
+{{/if}}
+
+</template>
+
+<template name="FormTextInput">
+  <div class="{{inputGroupClass}}">
+    <label for="{{name}}">{{label}}</label>
+    <input id="{{name}}" name="{{name}}" type="text" value="{{value}}"
+      class="{{#if error}}has-error{{/if}}" />
+  </div>
+
+  {{#if error}}
+    <div class="error">{{error}}</div>
+  {{/if}}
+
+</template>

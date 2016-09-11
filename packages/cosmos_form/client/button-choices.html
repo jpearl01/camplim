@@ -1,0 +1,14 @@
+<template name="ButtonChoices">
+
+<button type="button" class="btn btn-primary dropdown-toggle button-choices" tabindex="{{tabindex}}"
+  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{value}} <span class="caret"></span>
+</button>
+
+<ul class="dropdown-menu">
+  {{#each choice in choices}}
+    <li><a href="#" class="button-choice {{#if isChoice choice}}active{{/if}}">{{choice}}</a></li>
+  {{/each}}
+</ul>
+
+</template>

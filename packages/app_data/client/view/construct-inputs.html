@@ -1,0 +1,64 @@
+<template name="construct">
+
+  <div>
+
+    {{#if Template.subscriptionsReady}}
+
+      {{#with fieldContainerClass=fieldContainerClass}}
+
+        {{#if atPart 'item' 'view' }}
+          {{> ChildButton id=thing._id type="Genomic Construct" }}
+        {{/if}}
+
+        <h3>Construct</h3>
+
+        <form class="form-horizontal">
+
+          {{#if thing._id}}
+            {{> TextInput name='_id' label='GC#' editmode=false editIconClass='hidden' }}
+          {{/if}}
+
+          {{> ParentSpecimen }}
+
+          {{> TextInput name='genotype' }}
+
+          {{> TextInput name='plasmid' }}
+
+          {{> TextInput name='resistance' }}
+
+          {{> TextInput name='concentration' }}
+
+          {{> DateInput name='dateMade' label='Made' }}
+
+          {{> RefInput name='madeByName' label="Made By" }}
+
+          {{> RefInput name='locationName' label="Location" }}
+
+          {{#each customKey in thing.getCustomKeys}}
+            {{> BootstrapFormCustomInput key=customKey }}
+          {{/each}}
+
+          {{> BootstrapFormCustomAdd }}
+
+          {{#if useSaveButton}}
+            <div>
+              <button type="submit" disabled="{{thing.isNotModified}}"
+                  class="btn {{#if thing.isModified}} btn-primary {{else}} btn-default {{/if}} btn-lg save-button {{buttonClass}}">
+                Save
+              </button>
+            </div>
+          {{/if}}
+
+        </form>
+
+      {{/with}}
+
+    {{else}}
+
+      <h1>Loading...</h1>
+
+    {{/if}}
+
+  </div>
+
+</template>

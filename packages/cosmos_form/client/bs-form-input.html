@@ -1,0 +1,76 @@
+<template name="BootstrapFormInput">
+
+  <div class="{{#if hasError}}has-error{{/if}} {{groupClass}}">
+    {{#if label}}
+      <label class="{{labelClass}}" for="{{name}}">{{label}}</label>
+    {{/if}}
+    <div class="{{fieldContainerClass}}">
+
+      {{!
+        TODO: use content blocks for label, input/static.
+        then, we can provide anything we want inside the outer controls.
+        and, we can reuse the controls for the input to make templates to use
+             inside there by default (text, date, phone, ref, etc.)
+        then, when we need to customize it, like putting in multiple elements, we can.
+      }}
+      {{#if editmode}}
+
+        <div class="{{fieldClass}}">
+
+          <input
+            type="{{type}}"
+            class="BI {{typeMarker}} {{inputClass}} {{inputSelector}} thing-input focus-input text-input"
+            id="{{id}}"
+            name="{{name}}"
+            value="{{formattedValue}}"
+            placeholder="{{placeholder}}"
+            minlength="{{minlength}}"
+            maxlength="{{maxlength}}"
+            required="{{required}}"
+            readonly="{{readonly}}"
+            autocomplete={{autocomplete}}
+            {{attributes}}
+            tabindex={{tabindex}}
+          >
+
+        </div>
+
+      {{else}}
+
+        <div class="{{fieldClass}}">
+
+          <p class="{{staticFieldClass}} editmode-true">
+            {{formattedValue}}
+            <span class="{{editIconClass}}" style="margin-left:10px;"></span>
+          </p>
+        </div>
+
+      {{/if}}
+
+    </div>
+
+    {{#if useEditButtons}}
+      <div class="col-sm-2 editmode-buttons">
+        {{#if useChangeButton}}
+          <button type="button" class="btn btn-primary change-button">
+            <span class="glyphicon glyphicon-ok"></span>
+          </button>
+        {{/if}}
+
+        <button type="button" class="btn btn-danger cancel-button">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </div>
+    {{/if}}
+
+  </div>
+
+  {{#if hasError}}
+    <div class="{{errorClass}}">
+      <span class="help-block">{{error}}</span>
+    </div>
+  {{/if}}
+
+  <div class="clearfix"></div>
+
+</template>

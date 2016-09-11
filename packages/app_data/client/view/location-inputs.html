@@ -1,0 +1,68 @@
+<template name="location">
+
+  {{#if Template.subscriptionsReady}}
+
+    {{#with fieldContainerClass=fieldContainerClass labelClass="control-label col-sm-1"}}
+
+      <h3 class="{{titleClass}}">Location</h3>
+
+      <form class="form-horizontal">
+
+        {{> TextInput name='name' }}
+
+        {{> TextInput name='room' }}
+
+        {{> TextInput name='rack' }}
+
+        {{> TextInput name='shelf' }}
+
+        {{> TextInput name='box' }}
+
+        {{> TextInput name='cell' }}
+
+        {{> BootstrapFormSelect name='storageType' label='Storage' }}
+
+        {{#each customKey in thing.getCustomKeys}}
+          {{> BootstrapFormCustomInput key=customKey }}
+        {{/each}}
+
+        {{> BootstrapFormCustomAdd }}
+
+        {{#if useSaveButton}}
+          <div>
+            <button type="submit" disabled="{{thing.isNotModified}}"
+                class="btn {{#if thing.isModified}} btn-primary {{else}} btn-default {{/if}} btn-lg save-button {{buttonClass}}">
+              Save
+            </button>
+          </div>
+
+        {{/if}}
+
+        {{#if thing._id}}
+
+            <h3>In Location</h3>
+            {{#if Template.subscriptionsReady}}
+              <ul>
+                {{#each thingy in things}}
+                  <li>
+                    {{thingy.__sourceType}} - <a href="../../{{thingy.__sourceType}}/view/{{thingy._id}}">{{thingy._id}}</a>
+                  </li>
+                {{/each}}
+              </ul>
+            {{else}}
+              Loading...
+            {{/if}}
+
+        {{/if}}
+
+      </form>
+
+    {{/with}}
+
+  {{else}}
+
+    <h1>Loading...</h1>
+
+  {{/if}}
+
+</template>

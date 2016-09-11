@@ -1,0 +1,162 @@
+<template name="ImportPending">
+
+  {{#if erroredImports.count}}
+    <div class="panel panel-default panel-danger">
+      <div class="panel-heading">Errored Imports</div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th style="width:30px;">&nbsp;</th>
+            <th>File</th>
+            <th>Errored</th>
+            <th>Lines</th>
+            <th>Error</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each erroredImports}}
+            <tr>
+              <td style="text-align:center">
+                <span class="text-danger glyphicon glyphicon-exclamation-sign"></span>
+              </td>
+              <td>{{fileName}}</td>
+              <td>{{formatDateTime errored}}</td>
+              <td>{{lines}}</td>
+              <td>{{error}}</td>
+              <td style="text-align:right;">
+                <button type="button" class="btn btn-danger btn-sm confirm-delete-button"
+                    aria-label="Confirm Delete" style="{{#unless deleting _id}}visibility:hidden{{/unless}}">
+                    Confirm <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+
+                {{#if deleting _id}}
+                  <button type="button" class="btn btn-default btn-sm cancel-delete-button" aria-label="Cancel Delete">
+                    <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                  </button>
+                {{else}}
+                  <button type="button" style="" class="btn btn-sm delete-button" aria-label="Delete">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  </button>
+                {{/if}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{/if}}
+
+  <br/>
+  <br/>
+
+  <div class="panel panel-default panel-primary">
+    <div class="panel-heading">Completed Imports</div>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th style="width:30px;">&nbsp;</th>
+          <th>File</th>
+          <th>Completed</th>
+          <th>Lines</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each completedImports}}
+          <tr>
+            <td style="text-align:center"><span class="text-primary glyphicon glyphicon-ok"></span></td>
+            <td>{{fileName}}</td>
+            <td>{{formatDateTime completed}}</td>
+            <td>{{lines}}</td>
+            <td style="text-align:right;">
+              <button type="button" class="btn btn-danger btn-sm confirm-delete-button"
+                  aria-label="Confirm Delete" style="{{#unless deleting _id}}visibility:hidden{{/unless}}">
+                  Confirm <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              </button>
+
+              {{#if deleting _id}}
+                <button type="button" class="btn btn-default btn-sm cancel-delete-button" aria-label="Cancel Delete">
+                  <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                </button>
+              {{else}}
+                <button type="button" style="" class="btn btn-sm delete-button" aria-label="Delete">
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+              {{/if}}
+            </td>
+          </tr>
+        {{else}}
+          <tr><td colspan="5" style="text-align:center;">&lt;none&gt;</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel panel-default panel-success">
+    <div class="panel-heading">Processing Imports</div>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th style="width:30px;">&nbsp;</th>
+          <th>File</th>
+          <th>Started</th>
+          <th>Read %</th>
+          <th>Lines</th>
+          <!-- <th>&nbsp;</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        {{#each processingImports}}
+          <tr>
+            <td><span class="text-success glyphicon glyphicon-play"></span></td>
+            <td>{{fileName}}</td>
+            <td>{{formatDateTime started}}</td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar progress-bar-primary progress-bar-striped active" role="progressbar"
+                    aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:{{progress}}%;">
+                  {{progress}}%
+                </div>
+              </div>
+            </td>
+            <td>{{lines}}</td>
+            {{! TODO: allow stop/pause/cancel/restart... <td> </td> }}
+          </tr>
+        {{else}}
+          <tr><td colspan="5" style="text-align:center;">&lt;none&gt;</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="panel panel-default panel-warning">
+    <div class="panel-heading">Queued Imports</div>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th style="width:30px;">&nbsp;</th>
+          <th>File</th>
+          <th>Queued</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each queuedImports}}
+          <tr>
+            <td><span class="text-warning glyphicon glyphicon-pause"></span></td>
+            <td>{{fileName}}</td>
+            <td>{{formatDateTime created}}</td>
+            <td> {{! TODO: allow cancel...}}
+            </td>
+          </tr>
+        {{else}}
+          <tr><td colspan="4" style="text-align:center;">&lt;none&gt;</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+</template>

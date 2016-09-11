@@ -1,0 +1,16 @@
+{
+  "public": {
+    "silencePhasorQueueing" : "true"
+  },
+
+  "cluster": { "count": 1 },
+  "workers": {
+    "count": 1,
+    "monq": {
+    },
+    "cron": {
+      "log": true,
+      "disable": true
+    }
+  }
+}

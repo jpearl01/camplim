@@ -1,0 +1,44 @@
+<template name="dsidebar">
+
+<ul class="nav nav-sidebar">
+
+  {{!-- sections have grouped menus with a title and sub part `item` --}}
+
+  {{#with context=context}}
+
+    {{#each section in context.sections}}
+      <li class="text-primary context-menu-header {{#if section.isLink}}link{{/if}} {{atSidebarMenu context.name section.menu}}">
+        {{#if section.isLink}}
+          <a href="{{to values=(locationValues section.menu)}}" class="">
+            <span class="{{section.class}}" aria-hidden="true"></span> {{section.title}}
+            {{#if atSidebarMenu context.name section.menu}}<span class="sr-only">(current)</span>{{/if}}
+          </a>
+        {{else}}
+          {{section.title}}
+        {{/if}}
+      </li>
+
+      {{#each menu in section.menus}}
+        <li class="{{atMenuItem section.menu menu.menu}}">
+          <a href="{{to values=(locationValues section.menu menu.menu)}}" class="">
+            <span class="{{menu.class}}" aria-hidden="true"></span> {{menu.title}}
+            {{#if atMenuItem section.menu menu.menu}}<span class="sr-only">(current)</span>{{/if}}
+          </a>
+        </li>
+     {{/each}}
+    {{/each}}
+
+    {{!-- regular menus is just a list of menu links --}}
+
+    {{#each menu in context.menus}}
+      <li class="{{atSidebarMenu context.name menu.menu}} {{#if menu.hidden}}active-only{{/if}}">
+        <a href="{{to values=(locationValues menu.menu)}}">
+          <span class="{{menu.class}}" aria-hidden="true"></span> {{menu.title}}
+          {{#if atSidebarMenu context.name menu.menu}}<span class="sr-only">(current)</span>{{/if}}
+        </a>
+      </li>
+    {{/each}}
+  {{/with}}
+</ul>
+
+</template>

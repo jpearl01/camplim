@@ -1,0 +1,51 @@
+<!-- <template name="BootstrapInput">
+
+  <div class="{{groupStatusClass}} {{groupClass}}">
+    {{#if label}}
+      <label class="{{labelClass}}" for="{{name}}">{{label}}</label>
+    {{/if}}
+    <div class="{{fieldContainerClass}}">
+      <div class="{{fieldClass}}">
+        {{#if editmode}}
+
+          <input
+            type="{{type}}"
+            class="BI {{typeMarker}} {{inputClass}}"
+            id="{{id}}"
+            name="{{name}}"
+            value="{{value}}"
+            placeholder="{{placeholder}}"
+            minlength="{{minlength}}"
+            maxlength="{{maxlength}}"
+            required="{{required}}"
+            readonly="{{readonly}}"
+            {{attributes}}
+          >
+
+          {{! move this bootstrap input stuff to cosmos:form...?}}
+          {{! it's not much anyway... or, do cosmos:form-bootstrap}}
+          {{! instead of feedback, need a green check mark and red X for Save/Cancel }}
+          {{! look at x-editable's HTML source code to see how they do it}}
+
+          {{#if useFeedback}}
+            <span class="{{feedbackClass}} {{feedbackIcon}}" aria-hidden="true"></span>
+          {{/if}}
+
+        {{else}}
+          {{! use formattedValue so DateInput can format via .toLocaleString ... or momentjs}}
+          <p class="form-control-static">{{value}}</p>
+        {{/if}}
+
+      </div>
+    </div>
+  </div>
+
+  {{#if error}}
+    <div class="{{errorClass}}">
+      <span class="help-block">{{error}}</span>
+    </div>
+  {{/if}}
+
+  <div class="clearfix"></div>
+
+</template> -->

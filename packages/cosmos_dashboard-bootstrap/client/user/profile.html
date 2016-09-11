@@ -1,0 +1,86 @@
+<template name="profile">
+
+{{#if currentUser}}
+
+<form class="form-horizontal">
+
+  <div class="form-group form-group-lg">
+    <label for="createdByName" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-9">
+      <p class="form-control-static">{{profileName}}</p>
+    </div>
+  </div>
+
+  <div class="form-group form-group-lg">
+    <label for="createdByName" class="col-sm-2 control-label">Primary Email</label>
+    <div class="col-sm-9">
+      <p class="form-control-static">{{primaryEmail}}</p>
+    </div>
+  </div>
+
+  </form>
+
+  {{#if changingPassword}}
+    <br/><br/>
+    <form id="PasswordForm" class="form-horizontal">
+
+      <div class="form-group form-group-lg">
+        <label for="currentPassword" class="col-sm-3 control-label">Current Password</label>
+        <div class="col-sm-6">
+          <input type="password" name="currentPassword" class="form-control focus-input"
+            minlength="4" maxlength="20" required="required">
+        </div>
+      </div>
+
+      <div class="form-group form-group-lg">
+        <label for="newPassword" class="col-sm-3 control-label">New Password</label>
+        <div class="col-sm-6">
+          <input type="password" name="newPassword" class="form-control"
+            minlength="4" maxlength="20" required="required">
+        </div>
+      </div>
+
+      <div class="col-sm-4 col-sm-offset-2">
+        <button type="submit" class="btn btn-primary make-change-button">
+          <!-- <span class="glyphicon glyphicon-refresh"></span>  --> Change Password
+        </button>
+        <button type="button" class="btn btn-danger cancel-change-button">
+          <!-- <span class="glyphicon glyphicon-remove"></span> -->
+          Cancel
+        </button>
+      </div>
+
+      <div class="has-warning">
+        <span class="help-block">
+          Passwords must be at least 8 characters.
+        </span>
+      </div>
+
+    </form>
+
+  {{else}}
+
+    <div class="col-sm-2 col-sm-offset-2">
+      <button type="button" class="btn btn-secondary change-password-button">
+        <span class="glyphicon glyphicon-refresh"></span> Change Password
+      </button>
+    </div>
+
+  {{/if}}
+
+{{/if}}
+
+{{!--
+  {{#with fieldContainerClass=fieldContainerClass thing=user }}
+
+    <form class="form-horizontal">
+
+      {{> TextInput name="profile.name" required="required" }}
+
+      {{> TextInput name="email" required="required" }}
+
+    </form>
+
+  {{/with}}
+--}}
+</template>

@@ -1,0 +1,6 @@
+.meteor/local
+.meteor/meteorite
+*.cached
+*.map
+node_modules
+

@@ -1,0 +1,7 @@
+ul.nav-sidebar li.active-only {
+  display:none;
+}
+
+ul.nav-sidebar li.active-only.active {
+  display:block;
+}

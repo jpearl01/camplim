@@ -1,0 +1,75 @@
+<template name="MapField">
+
+  {{#if editmode}}
+    <div class="col-sm-3">
+      <span class="rowIndex">{{visualIndex}}</span>
+      <input type="text" class="form-control TI focus-input map-field-input map-field-foreign-name-input"
+        value="{{field.foreignName}}" placeholder="Enter column name"
+        minlength="1" maxlength="300"
+        required="required">
+    </div>
+
+    <div class="col-sm-3">
+      <input type="text" class="TI map-field-input map-field-local-name-input form-control"
+        value="{{field.localName}}" placeholder="Enter local name"
+        minlength="1" maxlength="300" required="required">
+    </div>
+
+    {{> BootstrapFormSelect name="localCollection" label="" editmode=editmode
+        groupClass='col-sm-3' fieldContainerClass=''
+        autosave=false thingVar=fieldVar parentThingVar=thingVar}}
+
+    <div class="col-sm-3 editmode-buttons">
+      <button type="button" class="btn btn-primary change-button {{changeButtonVisibility}}">
+        <span class="glyphicon glyphicon-ok"></span>
+      </button>
+
+      <button type="button" class="btn btn-danger {{cancelButtonVisibility}}">
+        <span class="glyphicon {{#if deleting}}glyphicon-trash{{else}}glyphicon-remove{{/if}}"></span> {{#if deleting}}Confirm{{/if}}
+      </button>
+
+      <button type="button" class="btn btn-default {{deleteButtonVisibility}}">
+        <span class="glyphicon {{#if deleting}}glyphicon-ban-circle{{else}}glyphicon-trash{{/if}}"></span>
+      </button>
+
+    </div>
+
+    {{#if hasError}}
+      <div class="{{errorClass}}">
+        <span class="help-block">{{error}}</span>
+      </div>
+    {{/if}}
+
+  {{else}}
+    <p class="form-control-static editmode-true">
+      <div class="col-sm-3">
+        <span class="rowIndex">{{visualIndex}}</span>
+        {{field.foreignName}}
+      </div>
+      <div class="col-sm-3">{{field.localName}}</div>
+      <div class="col-sm-3">{{field.localCollection}}</div>
+    </p>
+  {{/if}}
+
+
+  <div class="clearfix"></div>
+
+</template>
+
+<template name="AddMapField">
+
+{{#if adding}}
+  {{> MapField addingVar=addingVar parentThingVar=parentThingVar}}
+{{else}}
+  <div class="form-group">
+    <div class="col-sm-3 col-sm-offset-1">
+      <button type="button" class="btn btn-secondary btn-xs add-map-field add-custom">
+        <span class="glyphicon glyphicon-plus"></span> Field
+      </button>
+    </div>
+  </div>
+{{/if}}
+
+<div class="clearfix"></div>
+
+</template>

@@ -1,0 +1,55 @@
+<template name="specimen">
+
+  <div>
+    {{#if Template.subscriptionsReady}}
+
+      {{#if atPart 'item' 'view' }}
+        {{> ChildButton id=thing._id type="Specimen" }}
+      {{/if}}
+
+      <h3>Specimen</h3>
+
+      <form class="form-horizontal">
+
+        {{#if thing._id}}
+          {{> TextInput name='_id' label='S#' editmode=false editIconClass='hidden' }}
+        {{/if}}
+
+        {{> DateInput name='dateCollected' label='Collected' }}
+
+        {{> DateInput name='dateReceived' label='Received' }}
+
+        {{> RefInput name="collaboratorName" label="Collaborator" placeholder='Enter collaborator name' }}
+
+        {{> RefInput name="projectName" label="Project" placeholder='Enter project name' }}
+
+        {{> RefInput name="locationName" label="Location" placeholder='Enter location' }}
+
+        {{> RefInput name="loggedByName" label="Logged By" placeholder='Enter member name' }}
+
+        {{#each customKey in thing.getCustomKeys}}
+          {{> BootstrapFormCustomInput key=customKey }}
+        {{/each}}
+
+        {{> BootstrapFormCustomAdd }}
+
+        {{#if useSaveButton}}
+          <div>
+            <button type="submit" disabled="{{thing.isNotModified}}"
+                class="btn {{#if thing.isModified}} btn-primary {{else}} btn-default {{/if}} btn-lg save-button {{buttonClass}}">
+              Save
+            </button>
+          </div>
+        {{/if}}
+
+      </form>
+
+    {{else}}
+
+      <h1>Loading...</h1>
+
+    {{/if}}
+
+  </div>
+
+</template>

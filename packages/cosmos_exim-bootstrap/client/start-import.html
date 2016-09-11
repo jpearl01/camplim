@@ -1,0 +1,53 @@
+<template name="ImportStart">
+
+  <h2>Start a New Import</h2>
+
+  {{#if Template.subscriptionsReady }}
+
+    <form class="form-horizontal">
+
+      <div class="form-group">
+        <label for="importFileSelect" class="control-label col-sm-3">Select Import File:</label>
+        <div class="col-sm-7">
+          <select id="importFileSelect" class="form-control">
+            <option value="">Select a File</option>
+            {{#each file in importFiles}}
+              <option value="{{file._id}}">{{file.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="importMapSelect" class="control-label col-sm-3">Select Import Map:</label>
+        <div class="col-sm-7">
+          <select id="importMapSelect" class="form-control">
+            <option value="">Select a Map</option>
+            {{#each map in importMaps}}
+              <option value="{{map._id}}">{{map.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <!--
+        <p class="text-muted"> TODO: allow specifying delimiter </p>
+        <p class="text-muted"> TODO: allow selecting "now" or scheduling a future date+time </p>
+      -->
+      <div class="form-group">
+        <div class="col-sm-4">
+          <button type="button" class="start-button btn {{#if disableStartButton}} btn-default {{else}} btn-primary{{/if}} btn-lg" disabled="{{disableStartButton}}">
+            Start
+          </button>
+        </div>
+      </div>
+
+    </form>
+
+  {{else}}
+
+    <h1>Loading...</h1>
+
+  {{/if}}
+
+</template>
