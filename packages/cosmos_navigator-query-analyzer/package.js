@@ -20,7 +20,8 @@ Package.onTest(function(api) {
 function uses(api) {
 
   api.use([
-    'coffeescript'
+    'ecmascript'
+    , 'coffeescript'
     , 'cosmos:navigator-location'  // ensure we have Nav
     , 'cosmos:navigator-query'     // ensure we have Nav query functions
     , 'cosmos:navigator-phasor'    // ensure we have Nav.phasor functions
