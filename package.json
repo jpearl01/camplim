@@ -1,0 +1,26 @@
+{
+  "name": "camplim",
+  "version": "1.0.3",
+  "description": "DrexelMed CAMP LIM",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "browserify-resolutions": "^1.0.6",
+    "had": "^0.6.1",
+    "strung": "^1.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpearl01/camplim.git"
+  },
+  "author": "Eli Doran",
+  "license": "???",
+  "bugs": {
+    "url": "https://github.com/jpearl01/camplim/issues"
+  },
+  "homepage": "https://github.com/jpearl01/camplim"
+}
